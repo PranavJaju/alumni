@@ -1,13 +1,14 @@
 import express, { Request, Response, Application, urlencoded } from 'express';
 import dotenv from 'dotenv';
 import { error } from 'console';
+import cors from 'cors';
 dotenv.config({ path: "./config.env" });
 require("../model/db");
 
 const app: Application = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cors());
 app.get('/', async (req: Request, res: Response) => {
     try {
         res.send("Hello");
